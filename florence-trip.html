@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise - Florence</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    background: #f6f6f6;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: #222;
+}
+
+.container {
+    padding: 30px 20px 60px;
+}
+
+/* Header */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 46px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+/* Main photo */
+.main-photo {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    margin-bottom: 25px;
+}
+.description {
+    max-width: 340px;
+    margin: 15px auto 25px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+}
+
+/* Countdown box */
+.countdown {
+    background: #111;
+    color: white;
+    padding: 20px 15px;
+    border-radius: 20px;
+    margin: 0 auto 25px;
+    max-width: 340px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    font-family: 'Inter', sans-serif;
+}
+
+.countdown .time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.countdown .label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+/* Flight card */
+.flight-box {
+    margin-top: 10px;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-size: 14px;
+    color: #555;
+}
+
+.route {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.flight-box .route {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;   /* <-- added */
+    margin-bottom: 12px;  /* optional spacing */
+}
+
+.footer {
+    margin-top: 30px;
+    font-family: 'Great Vibes', cursive;  
+    font-size: 28px;
+    color: #333;
+}
+
+/* Responsive text for smaller screens */
+@media (max-width: 360px) {
+    h1 { font-size: 28px; }
+    .countdown .time { font-size: 24px; }
+    .flight-box { font-size: 13px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Happy Birthday 🎉</h1>
+<div class="subtitle">Your next adventure begins in...</div>
+
+<!-- Main photo -->
+<img src="florence-foto.webp" class="main-photo" alt="Florence">
+
+<p class="description">
+Late May in Florence is warm and sunny 🌸. Stroll the charming streets, enjoy the river views, and taste delicious Italian treats. Pack a light jacket just in case, but mostly get ready to soak up the sunshine and Florentine charm!</p>
+
+<!-- Countdown -->
+<div class="countdown">
+    <div class="time" id="countdown"></div>
+    <div class="label">DAYS • HOURS • MINUTES • SECONDS</div>
+</div>
+
+<!-- Flight details -->
+<div class="flight-box">
+    <div class="route">VNO ✈ FLR</div>
+    <div class="details">
+        <div><i class="fas fa-map-marker-alt"></i> Vilnius → Florence</div>
+        <div><i class="fas fa-calendar-alt"></i>28 May 2026</div>
+        <div><i class="fas fa-clock"></i> Departure: 05:00 AM</div>
+    </div>
+</div>
+
+<div class="footer">
+    Pack your bags — it’s time to fly ✈
+</div>
+
+</div>
+
+<script>
+// Set your flight date & time
+var countDownDate = new Date("May 28, 2026 05:00:00").getTime();
+
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "✈ Time to Fly!";
+    }
+
+}, 1000);
+</script>
+
+</body>
+</html>
